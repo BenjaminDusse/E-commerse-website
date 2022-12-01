@@ -2,23 +2,29 @@
 {% load static %}
 
 {% block title %}
-    {{ product.name }}
+{{ product.name }}
 {% endblock title %}
 
 {% block content%}
-    <div class="product-detail">
-        <img src="{% if product.image  %}{{ product.image.url }}{% else  %}{% static 'img/default_pr.jpg' %}{% endif %}" alt="{{ product.title }}">
+<div class="product-detail">
+    <img src="{% if product.image  %}{{ product.image.url }}{% else  %}{% static 'img/default_pr.jpg' %}{% endif %}"
+        alt="{{ product.title }}">
 
-        <h1>{{ product.name }}</h1>
-        <h2>
-            <a href="{{ product.category.get_absolute_url }}">
-                {{ product.category }}
-            </a>
-        </h2>
+    <h1>{{ product.name }}</h1>
+    <h2>
+        <a href="{{ product.category.get_absolute_url }}">
+            {{ product.category }}
+        </a>
+    </h2>
 
-        <p class="price">Price: {{ product.price }}$</p>
-        {{ product.description }}
+    <p class="price">Price: {{ product.price }}$</p>
+    <form action="{% url 'cart:cart_add' product.id %}" method="post">
+        {% csrf_token %}
+        {{ cart_product_form }}
+        <button type="submit" value="Add to Cart">Add to Cart</button>
+    </form>
+    {{ product.description }}
 
-    </div>
+</div>
 
 {% endblock content %}
