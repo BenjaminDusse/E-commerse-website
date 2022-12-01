@@ -9,4 +9,4 @@ After Clone this project you'll need do this following steps:
 Thanks for your attention! <br>
 Copyright by &copy;Fadin Group
 
-<img src='website.png'>
+![alt text](website.png)
