@@ -17,7 +17,7 @@ def cart_add(request, product_id):
         print('******************************')
 
     return redirect('cart:cart_detail')
-    
+
 
 
 def cart_remove(request, product_id):
